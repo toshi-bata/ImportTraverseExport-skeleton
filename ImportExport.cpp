@@ -48,11 +48,27 @@ int main(A3DInt32 iArgc, A3DUTF8Char** ppcArgv)
 	//
 	std::wstringstream bin_dir;
 #ifdef _DEBUG
-	std::wstring buffer;
-	buffer.resize(_MAX_PATH * 2);
-	if (GetEnvironmentVariable(L"HEXCHANGE_INSTALL_DIR", &buffer[0], static_cast<DWORD>(buffer.size())))
 	{
-		bin_dir << buffer.data() << L"/bin/win64_v142\0";
+		// Safely retrieve HEXCHANGE_INSTALL_DIR and handle required buffer size
+		DWORD required = GetEnvironmentVariableW(L"HEXCHANGE_INSTALL_DIR", nullptr, 0);
+		if (required > 0) {
+			std::wstring buffer;
+			buffer.resize(required);
+			DWORD got = GetEnvironmentVariableW(L"HEXCHANGE_INSTALL_DIR", &buffer[0], required);
+			if (got > 0 && got < required) {
+				buffer.resize(got);
+				// normalize trailing separators and use Windows-style separators for the bin path
+				if (!buffer.empty() && (buffer.back() == L'\\' || buffer.back() == L'/'))
+					buffer.pop_back();
+				bin_dir << buffer << L"\\bin\\win64_v142";
+			} else {
+				// HEXCHANGE_INSTALL_DIR set but could not be read correctly; using default loader path.
+				bin_dir << L"";
+			}
+		} else {
+			// EXCHANGE_INSTALL_DIR not set; using default loader path.
+			bin_dir << L"";
+		}
 	}
 #else
 	bin_dir << L"";
