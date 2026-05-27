@@ -61,18 +61,19 @@ int main(A3DInt32 iArgc, A3DUTF8Char** ppcArgv)
 				if (!buffer.empty() && (buffer.back() == L'\\' || buffer.back() == L'/'))
 					buffer.pop_back();
 				bin_dir << buffer << L"\\bin\\win64_v142";
-			} else {
-				// HEXCHANGE_INSTALL_DIR set but could not be read correctly; using default loader path.
+			}
+			else {
+				_tprintf(_T("[Warning] Failed to read environment variable HEXCHANGE_INSTALL_DIR. Using default loader path.\n"));
 				bin_dir << L"";
 			}
-		} else {
-			// EXCHANGE_INSTALL_DIR not set; using default loader path.
+		}
+		else {
+			_tprintf(_T("[Warning] Environment variable HEXCHANGE_INSTALL_DIR is not set. Using default loader path.\n"));
 			bin_dir << L"";
 		}
 	}
 #else
 	bin_dir << L"";
-
 #endif
 
 	A3DSDKHOOPSExchangeLoader sHoopsExchangeLoader(bin_dir.str().data(), HOOPS_LICENSE);
