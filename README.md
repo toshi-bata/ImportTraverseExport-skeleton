@@ -36,20 +36,16 @@ When exploring new traversal strategies, design patterns, or data extraction app
 
 ## Getting Started
 
-1. Set the environment variable:
+1. Open `_VS2022.bat` in a text editor and update the `HEXCHANGE_INSTALL_DIR` path to match your local SDK installation:
    ```bat
-   set HEXCHANGE_INSTALL_DIR=C:\path\to\HoopsExchange
+   SET HEXCHANGE_INSTALL_DIR=C:\path\to\HoopsExchange
    ```
-2. Open the solution:
-   ```bat
-   _VS2022.bat
-   ```
-3. Build in **Debug** or **Release** (x64).
+2. Save the file, then run `_VS2022.bat`. This temporarily sets `HEXCHANGE_INSTALL_DIR` in the current environment and launches Visual Studio 2022 with `ImportTraverseExport.sln` already open.
+3. Build in **Debug** (x64).
 4. Run with optional arguments:
    ```
    ImportExport.exe [input_file] [output_file] [log_file]
    ```
-   If no arguments are given, the default sample CAD file bundled with the SDK is used.
 
 `common.hpp` provides `CHECK_RET` / `TEST_RET` macros and the `DataGuard<T,D>` RAII helper to keep prototype code concise and leak-free.
 
