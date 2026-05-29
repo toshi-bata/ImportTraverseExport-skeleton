@@ -20,12 +20,13 @@ When exploring new traversal strategies, design patterns, or data extraction app
 
 | File | Description |
 |------|-------------|
+| `_VS2022.bat` | Convenience script to open the solution in VS 2022 |
 | `ImportExport.cpp` | Main entry point — loads a CAD file and exports it; add traversal/prototyping code here |
 | `common.hpp` | Utility macros and helpers extracted from the HOOPS Exchange SDK samples (logging, memory tracking, `DataGuard`, etc.) |
 | `ImportTraverseExport.sln` | Visual Studio 2022 solution |
 | `ImportExport.vcxproj` | VC++ project targeting x64 |
 | `HOOPSExchangeSamples.props` | Property sheet for SDK include/lib paths |
-| `VS2022.bat` | Convenience script to open the solution in VS 2022 |
+
 
 ## Prerequisites
 
@@ -41,7 +42,7 @@ When exploring new traversal strategies, design patterns, or data extraction app
    ```
 2. Open the solution:
    ```bat
-   VS2022.bat
+   _VS2022.bat
    ```
 3. Build in **Debug** or **Release** (x64).
 4. Run with optional arguments:
