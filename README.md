@@ -31,7 +31,7 @@ When exploring new traversal strategies, design patterns, or data extraction app
 ## Prerequisites
 
 - **Visual Studio 2022** (v143 toolset, x64)
-- **HOOPS Exchange SDK < 2026.3.0** installed and the environment variable `HEXCHANGE_INSTALL_DIR` pointing to its root directory
+- **HOOPS Exchange SDK >= 2026.3.0** installed and the environment variable `HEXCHANGE_INSTALL_DIR` pointing to its root directory
 - A valid `hoops_license.h` (provided with the SDK)
 
 ## Getting Started
